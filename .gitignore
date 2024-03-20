@@ -13,8 +13,6 @@ dist-ssr
 *.local
 temp
 
-websocket
-websocket/app/video
 
 # Editor directories and files
 .vscode/*
