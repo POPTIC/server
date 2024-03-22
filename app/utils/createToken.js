@@ -1,4 +1,4 @@
-const { Keys,tokenExpiresTime } = require('../config/serverConfig')
+const { Keys,tokenExpiresTime } = require('../config/ServerConfig')
 const jwt = require('jsonwebtoken');
 module.exports = function (name) {
     return jwt.sign(

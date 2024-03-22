@@ -2,9 +2,11 @@ const Router = require('koa-router');
 
 let router = new Router();
 
-const logRegRouter = require('./router/LogRegRouter.js');
-const userRouter = require('./router/UserRouter.js')
+const loginRouter = require('./router/loginRouter.js');
+const userRouter = require('./router/userRouter.js')
+const registerRouter = require('./router/registerRouter.js')
 
-router.use(logRegRouter.routes());
+router.use(loginRouter.routes());
 router.use(userRouter.routes());
+router.use(registerRouter.routes());
 module.exports = router;

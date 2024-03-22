@@ -1,24 +1,24 @@
 var mysql = require('mysql');
-const dataBaseConfig = require('../config/dataBaseConfig.js');
+const dataBaseConfig = require('../config/DataBaseConfig.js');
 
 var pool = mysql.createPool(dataBaseConfig); // 创建连接池
 
 var dataBase = {};
-
-// 创建查询语句
+/**
+ * 
+ * @param {string} sql - sql模板语句
+ * @param {Array} params - sql模板参数
+ * @returns 
+ */
 dataBase.query = function (sql, params) {
-    // sql: sql语句
-    // param: 查询参数
   return new Promise((resolve, reject) => {
-    // 取出链接
     pool.getConnection(function (err, connection) {
       if (err) {
         reject(err);
         return;
       }
       connection.query(sql, params, function (error, results, fields) {
-        console.log(`${ sql }=>${ params }`);
-        // 释放连接
+        console.log(`${sql}=>${params}`);
         connection.release();
         if (error) {
           reject(error);
@@ -29,5 +29,5 @@ dataBase.query = function (sql, params) {
     });
   });
 }
-// 导出对象
+
 module.exports = dataBase;

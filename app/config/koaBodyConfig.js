@@ -1,4 +1,4 @@
-const {uploadDir} = require("./serverConfig.js")
+const {uploadDir} = require("./ServerConfig.js")
 // 没有对其解包导致出现问题
 
 const koaBodyConfig = {

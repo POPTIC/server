@@ -1,9 +1,9 @@
 const { SUCCESS } = require('../config/StateConfig.js');
-const ImageDao = require('../Dao/ImageDao.js');
-const userDao = require('../Dao/userDao.js');
+const ImageDao = require('../dao/imageDao.js');
+const userDao = require('../dao/userDao.js');
 
 module.exports = {
-    GetUserInfo: async ctx => {
+    getUserInfo: async ctx => {
         let { id } = ctx.request.body;
         let userInfo = await userDao.GetUserInfo(id);
         ctx.body = {
@@ -12,7 +12,7 @@ module.exports = {
             data : userInfo,
         }
     },
-    GetUserImgURL: async ctx => {
+    getUserImgURL: async ctx => {
         let { id } = ctx.request.body;
         let url = await ImageDao.GetUserGalleyURL(id);
         ctx.body = {
