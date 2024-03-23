@@ -5,5 +5,4 @@ let loginRouter = new Router();
 
 loginRouter.post('/login', loginController.login)
 
-
 module.exports = loginRouter;

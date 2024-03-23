@@ -9,4 +9,5 @@ module.exports = {
     FORMATE_ERROR: '031',
     UNKNOW_ERROR: '090',
     SUCCESS: '000',
+    UNFINISHED : '006',
 }

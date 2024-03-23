@@ -1,5 +1,5 @@
 const userDao = require('../dao/userDao.js');
-const { USERNAME_PASSWORD_NOT_MATCH, UNKNOW_ERROR, SUCCESS } = require('../config/StateConfig.js');
+const state = require('../config/StateConfig.js');
 const crypto = require("crypto");
 const createToken = require('../utils/createToken.js');
 
@@ -10,7 +10,7 @@ module.exports = {
         let user = await userDao.check(userName, password);
         if (user.length === 0) {
             ctx.body = {
-                code: USERNAME_PASSWORD_NOT_MATCH,
+                code: state.USERNAME_PASSWORD_NOT_MATCH,
                 message: '用户名或密码错误'
             }
             return;
@@ -18,7 +18,7 @@ module.exports = {
         else if (user.length === 1) {
             const token = createToken(user[0].user_name);
             ctx.body = {
-                code: SUCCESS,
+                code: state.SUCCESS,
                 message: '登录成功',
                 data: {
                     token,
@@ -29,7 +29,7 @@ module.exports = {
         }
         else {
             ctx.body = {
-                code: UNKNOW_ERROR,
+                code: state.UNKNOW_ERROR,
                 message: '未知错误'
             }
         }
