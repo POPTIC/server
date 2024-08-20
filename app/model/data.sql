@@ -1,23 +1,24 @@
-DROP DATABASE IF EXISTS storeDB;
-create database storeDB;
-use storeDB;
-create table users(
-  user_id int primary key auto_increment,
-  user_name char (40) not null unique,
+DROP DATABASE IF EXISTS blog;
+create database blog;
+use blog;
+create table users (
+  userId int primary key auto_increment,
+  userName char (40) not null unique,
   password char (40) not null,
   email char(11) null,
   school char(30) null,
-  birthday char(16) null
+  birthday char(16) null,
+  avatar char(128) null
 );
 
 create table article(
-  id int primary key auto_increment,
-  user_id int,
-  article_url char(200),
-  view_number int,
-  like_number int,
-  tag TINYINT,
-  FOREIGN KEY (user_id) REFERENCES users(user_id)
+  uuid char(36) primary key,
+  userId int,
+  articleUrl char(255),
+  viewNumber int,
+  likeNumber int,
+  tag char(96),
+  FOREIGN KEY (userId) REFERENCES users(userId)
 );
 
 create table img(
